@@ -6,8 +6,8 @@ A production-ready full-stack Team Task Manager with authentication, project man
 
 Deploy backend and frontend separately on Railway.
 
-- Backend service root: `backend`
-- Frontend service root: `frontend`
+- Backend service root: `team-task-manager/backend`
+- Frontend service root: `team-task-manager/frontend`
 
 ## Tech stack
 
@@ -44,39 +44,27 @@ Deploy backend and frontend separately on Railway.
 ## Folder structure
 
 ```txt
-team-task-manager/
-  backend/
-    src/
-      config/
-      controllers/
-      middleware/
-      models/
-      routes/
-      utils/
-      validations/
-      tests/
-    package.json
-    railway.json
-    .env.example
-  frontend/
-    src/
-      api/
-      components/
-      context/
-      pages/
-      styles/
-      utils/
-    package.json
-    railway.json
-    .env.example
+team-task-manager-fullstack/
+  README.md
+  team-task-manager/
+    backend/
+      src/
+      package.json
+      railway.json
+      .env.example
+    frontend/
+      src/
+      package.json
+      railway.json
+      .env.example
 ```
 
 ## Backend setup
 
 ```bash
-cd backend
+cd team-task-manager/backend
 npm install
-cp .env.example .env
+# copy .env.example to .env and fill values
 npm run dev
 ```
 
@@ -89,9 +77,9 @@ http://localhost:5000
 ## Frontend setup
 
 ```bash
-cd frontend
+cd team-task-manager/frontend
 npm install
-cp .env.example .env
+# copy .env.example to .env and fill values
 npm run dev
 ```
 
@@ -175,16 +163,42 @@ GET /api/dashboard/overdue
 
 1. Create a new Railway project.
 2. Add a new service from GitHub.
-3. Set root directory to `backend`.
-4. Add backend environment variables.
-5. Deploy.
+3. Set root directory to `team-task-manager/backend`.
+4. Add backend environment variables:
+   - `NODE_ENV=production` (must be exactly this)
+   - `PORT=5000`
+   - `MONGO_URI=...`
+   - `JWT_SECRET=...`
+   - `JWT_EXPIRES_IN=7d`
+   - `CLIENT_URL=https://your-frontend-service.up.railway.app`
+   - Optional: `ADMIN_SEED_NAME`, `ADMIN_SEED_EMAIL`, `ADMIN_SEED_PASSWORD`
+5. In Networking, generate domain with target port `5000`.
+6. Deploy.
 
 ### Frontend Railway service
 
 1. Add another Railway service from same GitHub repo.
-2. Set root directory to `frontend`.
-3. Add `VITE_API_URL=https://your-backend-service.up.railway.app/api`.
-4. Deploy.
+2. Set root directory to `team-task-manager/frontend`.
+3. Add variables:
+   - `PORT=4173`
+   - `VITE_API_URL=https://your-backend-service.up.railway.app/api`
+4. In Networking, generate domain with target port `4173`.
+5. Deploy.
+
+## Railway troubleshooting
+
+- `Route not found: /` on backend:
+  - open `https://<backend-domain>/api` instead of `/`
+- Frontend auth 404:
+  - ensure `VITE_API_URL` includes protocol and api path
+  - valid: `https://your-backend.up.railway.app/api`
+- `Unable to reach the server` from frontend:
+  - backend likely down or blocked by CORS
+  - verify backend `CLIENT_URL` exactly matches frontend origin
+- `Blocked request host not allowed` on frontend:
+  - keep `frontend/vite.config.js` with Railway allowed hosts and redeploy frontend
+- Backend env validation fails:
+  - `NODE_ENV` must be one of: `development`, `test`, `production`
 
 ## Demo credentials
 
