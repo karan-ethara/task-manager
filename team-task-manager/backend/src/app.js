@@ -99,6 +99,16 @@ app.get('/health', (req, res) => {
   sendSuccess(res, { message: 'Team Task Manager API is healthy', data: {} });
 });
 
+app.get('/', (req, res) => {
+  sendSuccess(res, {
+    message: 'Team Task Manager API is running',
+    data: {
+      docs: '/api',
+      health: '/health'
+    }
+  });
+});
+
 app.get('/api', (req, res) => {
   sendSuccess(res, {
     message: 'Team Task Manager API is running',
