@@ -15,6 +15,13 @@ const getDefaultApiBaseUrl = () => {
   return `${protocol}//${hostname}${port ? `:${port}` : ''}/api`;
 };
 
+const normalizeApiBaseUrl = (value) => {
+  const raw = String(value || '').trim();
+  if (!raw) return getDefaultApiBaseUrl();
+  const withoutTrailingSlash = raw.replace(/\/+$/, '');
+  return /\/api$/i.test(withoutTrailingSlash) ? withoutTrailingSlash : `${withoutTrailingSlash}/api`;
+};
+
 const fallbackMessages = {
   400: 'The request could not be processed.',
   401: 'Your session has expired. Please log in again.',
@@ -47,7 +54,7 @@ export const extractData = (response, fallback = {}) => {
 };
 
 export const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || getDefaultApiBaseUrl(),
+  baseURL: normalizeApiBaseUrl(import.meta.env.VITE_API_URL),
   headers: { 'Content-Type': 'application/json' }
 });
 
