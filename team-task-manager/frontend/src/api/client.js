@@ -18,7 +18,10 @@ const getDefaultApiBaseUrl = () => {
 const normalizeApiBaseUrl = (value) => {
   const raw = String(value || '').trim();
   if (!raw) return getDefaultApiBaseUrl();
-  const withoutTrailingSlash = raw.replace(/\/+$/, '');
+  const withProtocol = /^https?:\/\//i.test(raw)
+    ? raw
+    : (raw.startsWith('localhost') || raw.startsWith('127.0.0.1') ? `http://${raw}` : `https://${raw}`);
+  const withoutTrailingSlash = withProtocol.replace(/\/+$/, '');
   return /\/api$/i.test(withoutTrailingSlash) ? withoutTrailingSlash : `${withoutTrailingSlash}/api`;
 };
 
