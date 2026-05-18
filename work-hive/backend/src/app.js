@@ -96,12 +96,12 @@ const authLimiter = rateLimit({
 });
 
 app.get('/health', (req, res) => {
-  sendSuccess(res, { message: 'Team Task Manager API is healthy', data: {} });
+  sendSuccess(res, { message: 'WorkHive API is healthy', data: {} });
 });
 
 app.get('/', (req, res) => {
   sendSuccess(res, {
-    message: 'Team Task Manager API is running',
+    message: 'WorkHive API is running',
     data: {
       docs: '/api',
       health: '/health'
@@ -111,7 +111,7 @@ app.get('/', (req, res) => {
 
 app.get('/api', (req, res) => {
   sendSuccess(res, {
-    message: 'Team Task Manager API is running',
+    message: 'WorkHive API is running',
     data: {
       endpoints: {
         health: '/health',

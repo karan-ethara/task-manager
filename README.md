@@ -1,13 +1,13 @@
-# Team Task Manager
+# WorkHive
 
-A production-ready full-stack Team Task Manager with authentication, project management, task assignment, progress tracking, dashboard analytics, and role-based access control.
+A production-ready full-stack WorkHive platform with authentication, project management, task assignment, progress tracking, dashboard analytics, and role-based access control.
 
 ## Live deployment
 
 Deploy backend and frontend separately on Railway.
 
-- Backend service root: `team-task-manager/backend`
-- Frontend service root: `team-task-manager/frontend`
+- Backend service root: `work-hive/backend`
+- Frontend service root: `work-hive/frontend`
 
 ## Tech stack
 
@@ -44,9 +44,9 @@ Deploy backend and frontend separately on Railway.
 ## Folder structure
 
 ```txt
-team-task-manager-fullstack/
+workhive-fullstack/
   README.md
-  team-task-manager/
+  work-hive/
     backend/
       src/
       package.json
@@ -62,7 +62,7 @@ team-task-manager-fullstack/
 ## Backend setup
 
 ```bash
-cd team-task-manager/backend
+cd work-hive/backend
 npm install
 # copy .env.example to .env and fill values
 npm run dev
@@ -77,7 +77,7 @@ http://localhost:5000
 ## Frontend setup
 
 ```bash
-cd team-task-manager/frontend
+cd work-hive/frontend
 npm install
 # copy .env.example to .env and fill values
 npm run dev
@@ -96,7 +96,7 @@ http://localhost:5173
 ```env
 NODE_ENV=development
 PORT=5000
-MONGO_URI=mongodb+srv://username:password@cluster.mongodb.net/team-task-manager
+MONGO_URI=mongodb+srv://username:password@cluster.mongodb.net/workhive
 JWT_SECRET=replace-with-a-long-random-secret
 JWT_EXPIRES_IN=7d
 CLIENT_URL=http://localhost:5173
@@ -163,7 +163,7 @@ GET /api/dashboard/overdue
 
 1. Create a new Railway project.
 2. Add a new service from GitHub.
-3. Set root directory to `team-task-manager/backend`.
+3. Set root directory to `work-hive/backend`.
 4. Add backend environment variables:
    - `NODE_ENV=production` (must be exactly this)
    - `PORT=5000`
@@ -178,7 +178,7 @@ GET /api/dashboard/overdue
 ### Frontend Railway service
 
 1. Add another Railway service from same GitHub repo.
-2. Set root directory to `team-task-manager/frontend`.
+2. Set root directory to `work-hive/frontend`.
 3. Add variables:
    - `PORT=4173`
    - `VITE_API_URL=https://your-backend-service.up.railway.app/api`
@@ -223,7 +223,7 @@ Role: Member
 
 ```txt
 Live URL: https://your-frontend-service.up.railway.app
-GitHub Repo: https://github.com/your-username/team-task-manager
+GitHub Repo: https://github.com/your-username/workhive
 Admin Login: admin@example.com / Admin@12345
 Member Login: member@example.com / Member@12345
 ```

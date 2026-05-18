@@ -1,7 +1,7 @@
 {
-  "name": "team-task-manager-backend",
+  "name": "workhive-backend",
   "version": "1.0.0",
-  "description": "Backend REST API for Team Task Manager",
+  "description": "Backend REST API for WorkHive",
   "main": "src/server.js",
   "type": "module",
   "scripts": {

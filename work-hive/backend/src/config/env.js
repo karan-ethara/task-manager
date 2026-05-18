@@ -6,7 +6,7 @@ dotenv.config();
 const { value, error } = Joi.object({
   NODE_ENV: Joi.string().valid('development', 'test', 'production').default('development'),
   PORT: Joi.number().port().default(5000),
-  MONGO_URI: Joi.string().pattern(/^mongodb(\+srv)?:\/\/.+$/).default('mongodb://127.0.0.1:27017/team-task-manager'),
+  MONGO_URI: Joi.string().pattern(/^mongodb(\+srv)?:\/\/.+$/).default('mongodb://127.0.0.1:27017/workhive'),
   JWT_SECRET: Joi.string().min(16).default('dev-secret-change-this'),
   JWT_EXPIRES_IN: Joi.string().default('7d'),
   CLIENT_URL: Joi.string().default('http://localhost:5173'),

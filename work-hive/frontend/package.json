@@ -1,7 +1,7 @@
 {
-  "name": "team-task-manager-frontend",
+  "name": "workhive-frontend",
   "version": "1.0.0",
-  "description": "Frontend for Team Task Manager",
+  "description": "Frontend for WorkHive",
   "type": "module",
   "scripts": {
     "dev": "vite --host 0.0.0.0",
