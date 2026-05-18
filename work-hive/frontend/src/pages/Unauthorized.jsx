@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import BrandLogo from '../components/BrandLogo';
 import PageHeader from '../components/PageHeader';
 
 export default function Unauthorized() {
@@ -9,9 +10,9 @@ export default function Unauthorized() {
     <div className="auth-screen">
       <section className="auth-card">
         <div className="auth-copy">
-          <div className="brand auth-brand"><div className="brand-icon">T</div><strong>TaskFlow</strong></div>
+          <BrandLogo className="auth-brand" subtitle="Projects, people, momentum" />
           <h1>Unauthorized</h1>
-          <p>You do not have access to this page.</p>
+          <p>This WorkHive area is only available to the right role permissions.</p>
         </div>
 
         <div className="form-card">

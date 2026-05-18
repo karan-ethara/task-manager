@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { AlertCircle, CheckCircle2, CircleDashed, ListChecks } from 'lucide-react';
+import BrandLogo from '../components/BrandLogo';
 import { dashboardApi } from '../api/dashboard';
 import LoadingSpinner from '../components/LoadingSpinner';
 import PageHeader from '../components/PageHeader';
@@ -191,7 +192,10 @@ export default function Dashboard() {
 
   return (
     <div className="dashboard-dense">
-      <PageHeader title="Dashboard" />
+      <div className="workspace-hero">
+        <PageHeader eyebrow="WorkHive" title="Dashboard" description="Your team pulse, priorities, and progress in one place." />
+        <BrandLogo className="workspace-brand-card" subtitle="Projects, people, momentum" />
+      </div>
 
       <div className="stats-grid dashboard-stats-compact dashboard-stats-four">
         {dashboardMetrics.map((metric) => <MetricCard key={metric.label} {...metric} />)}

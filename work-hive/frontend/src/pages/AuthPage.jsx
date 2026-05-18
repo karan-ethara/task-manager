@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
+import BrandLogo from '../components/BrandLogo';
 import { useAuth } from '../context/AuthContext';
 import LoadingSpinner from '../components/LoadingSpinner';
 
@@ -56,9 +57,9 @@ export default function AuthPage({ mode }) {
     <div className="auth-screen">
       <section className="auth-card">
         <div className="auth-copy">
-          <div className="brand auth-brand"><div className="brand-icon">T</div><strong>TaskFlow</strong></div>
-          <h1>{isSignup ? 'Create your workspace account' : 'Welcome back'}</h1>
-          <p>Manage projects, assign tasks, and track team progress from a clean role-based dashboard.</p>
+          <BrandLogo className="auth-brand" subtitle="Projects, people, momentum" />
+          <h1>{isSignup ? 'Create your WorkHive account' : 'Welcome back to WorkHive'}</h1>
+          <p>Manage projects, assign tasks, and keep your team aligned from one polished, role-aware workspace.</p>
         </div>
 
         <form className="form-card" onSubmit={handleSubmit}>

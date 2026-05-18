@@ -4,6 +4,7 @@ import { CheckSquare, ChevronDown, FolderKanban, Gauge, Menu, Settings, Users, X
 import { useAuth } from '../context/AuthContext';
 import { userApi } from '../api/users';
 import AvailabilityStatus from './AvailabilityStatus';
+import BrandLogo from './BrandLogo';
 import UserProfilePanel from './UserProfilePanel';
 
 export default function Layout() {
@@ -95,13 +96,7 @@ export default function Layout() {
         <button type="button" className="mobile-close-button" onClick={() => setSidebarOpen(false)} aria-label="Close navigation menu">
           <X size={16} /> Close
         </button>
-        <div className="brand">
-          <div className="brand-icon">T</div>
-          <div>
-            <strong>TaskFlow</strong>
-            <span>Team workspace</span>
-          </div>
-        </div>
+        <BrandLogo subtitle="Projects, people, momentum" />
 
         <nav className="nav-list">
           <NavLink to="/" end><Gauge size={18} /> Dashboard</NavLink>
